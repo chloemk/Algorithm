@@ -1,5 +1,7 @@
 function rockPaperScissors (roundCount) { 
 
+    roundCount = roundCount || 3;
+
     const plays = ['rock', 'paper', 'scissors'];
     let result = [];
 
