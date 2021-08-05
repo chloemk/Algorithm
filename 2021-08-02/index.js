@@ -1,38 +1,38 @@
-function sortArray(nums) {
-	let length = nums.length;
-	let half = Math.floor(length / 2 - 1);
-
-	for (let i = half; i >= 0; i--) {
-		heapSort(nums, i, length);
-	}
-	//work backwards, 가장 큰 엘리먼트를 배열의 끝으로 위치시킨다.
-	for (let j = length - 1; j >= 0; j--) {
-		//swap
-		[nums[j], nums[0]] = [nums[0], nums[j]];
-		//re-heapify array from beginning to the end of the unsorted section
-		heapSort(nums, 0, j);
-	}
-	return nums;
+//유클리드 호제법 --> 최대공약수 구하기
+function gcd(a, b) {
+	if (a % b === 0) return b;
+	return gcd(b, a % b);
 }
 
-//최대힙구조 생성
-function heapSort(nums, i, length) {
-	let largest = i;
-	let leftIdx = i * 2 + 1;
-	let rightIdx = i * 2 + 2;
+function divideChocolateStick(M, N) {
+	const result = [];
+	// 최대공약수를 구한다.
+	// M, N의 순서는 상관없다.
+	const GCD = gcd(M, N);
 
-	//부모가 왼쪽 자식보다 작다면 왼쪽 자식을 부모로 올려준다.
-	if (leftIdx < length && nums[largest] < nums[leftIdx]) largest = leftIdx;
-
-	//부모가 오른쪽 자식보다 작다면 오른쪽 자식을 부모로 올려준다.
-	if (rightIdx < length && nums[largest] < nums[rightIdx]) largest = rightIdx;
-
-	//부모노드가 가장 큰 값이 아니라면, 부모가 가장 큰 값이 되도록 swap해준다.
-	if (largest !== i) {
-		//swap
-		[nums[largest], nums[i]] = [nums[i], nums[largest]];
-		heapSort(nums, largest, length);
+	// 약수는 대칭적이므로 제곱근까지만 반복해도 된다.
+	// 예) 36의 약수는 1, 2, 3, 4, 6, 9, 12, 18, 36이다.
+	// 제곱근을 기준으로 양쪽의 값 하나씩 곱했을 때 36이 되기 때문에
+	// 제곱근 보다 큰 약수는 제곱근보다 작은 약수에서 구할 수 있다.
+	const sqrt = Math.floor(Math.sqrt(GCD));
+	for (let i = 1; i <= sqrt; i++) {
+		if (GCD % i === 0) {
+			// 최대공약수의 약수인 경우 중 제곱근 보다 작은 약수의 경우
+			result.push([i, M / i, N / i]);
+			if (i * i < GCD) {
+				// 제곱근이 아닌 경우(제곱근 보다 작은)
+				right = GCD / i; // 최대 공약수를 제곱근이 아닌 수로 나누면 제곱근 보다 큰 약수를 구할 수 있다.
+				result.push([right, M / right, N / right]);
+			}
+		}
 	}
+
+	// '빼빼로를 받게 되는 직원의 수'를 기준으로 오름차순으로 정렬
+	result.sort((op1, op2) => op1[0] - op2[0]);
+
+	return result;
 }
 
-console.log(sortArray([4, 10, 3, 5, 1]));
+let M = 4;
+let N = 8;
+console.log(divideChocolateStick(M, N));

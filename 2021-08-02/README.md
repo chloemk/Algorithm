@@ -1,6 +1,17 @@
-# Leetcode 912 Sort an Array
+# Toy divideChocolateStick
 
 ## 문제 이해
 
--   숫자를 배열로 받는 인자가 들어온다. ascending order로 정렬
+-   아몬드 빼빼로: M, 누드 빼빼로: N 를 어떻게 나눠줄 수 있는가. 
+- [빼빼로를 받게 되는 직원의 수, 나누어 주는 아몬드 빼빼로의 수, 나누어 주는 누드 빼빼로의 수] 순서로 정렬
 
+## 느낀점
+
+- 유클리드 호제법 --> 최대공약수 구하는 공식
+- 원리는 a를 b로 나눈 나머지를 r이라고 했을 때, GCD(a, b) = GCD(b, r)과 같다는 것이다. r이 0이라면, 그 때의 b가 최대공약수이다.
+```js
+function gcd (a, b) {
+  if (a % b === 0) return b;
+  return gcd(b, a % b);
+}
+```
