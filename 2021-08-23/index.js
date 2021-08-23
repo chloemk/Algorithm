@@ -16,3 +16,5 @@ function solution(n) {
 	}
 	return count;
 }
+
+console.log(solution(15));
