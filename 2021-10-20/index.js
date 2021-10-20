@@ -12,7 +12,5 @@ function solution(s) {
 		.join(' ');
 }
 
-const price = 3;
-const money = 20;
-const count = 4;
-console.log(solution(price, money, count));
+const s = 'try hello world';
+console.log(solution(s));
