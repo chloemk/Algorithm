@@ -21,3 +21,4 @@
 3. 특정 숫자의 배수에 해당하는 숫자를 지운다. 이때 자기 자신은 지워지지 않는다.
 4. 이미 지워진 숫자의 경우 건너뛴다.
 5. 2부터 시작해서 남아있는 숫자들을 출력한다.
+   [안경잡이개발자 블로그] (https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=ndb796&logNo=220653876929).
