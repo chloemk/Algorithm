@@ -1,4 +1,6 @@
-function solution(n) {}
+function solution(s) {
+	return s.split('').sort().reverse().join('');
+}
 
-const n = 12;
-console.log(solution(n));
+const s = 'Zbcdefg';
+console.log(solution(s));
