@@ -7,6 +7,7 @@ var maxSubArray = function (nums) {
 			curSum = 0;
 		}
 		curSum += nums[i];
+		// 둘 중 큰 것을 maxSub에 할당
 		maxSub = Math.max(maxSub, curSum);
 	}
 	return maxSub;
